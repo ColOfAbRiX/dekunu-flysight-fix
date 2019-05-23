@@ -86,7 +86,7 @@ time_deltas = (df['datetime'] - shifted_1['datetime']) / np.timedelta64(1, 's')
 df['velD'] = -(df['hMSL'] - shifted_1['hMSL']) / time_deltas
 
 # Smooth data
-if args.smooth is not None or args.smooth > 1:
+if args.smooth is not None and args.smooth > 1:
     for col in ['velN', 'velE', 'velD']:
         df[col] = df[col].rolling(window=args.smooth).mean()
     df = df.iloc[args.smooth:]
