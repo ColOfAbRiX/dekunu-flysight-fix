@@ -66,7 +66,19 @@ with open(args.dekunu_input_csv) as csv_file:
 df = df.iloc[1:]
 df['datetime'] = pd.to_datetime(df['time'])
 df = df.set_index('time')
+df['lat'] = df['lat'].astype(np.float64)
+df['lon'] = df['lon'].astype(np.float64)
+df['hMSL'] = df['hMSL'].astype(np.float64)
+df['velN'] = df['velN'].astype(np.float64)
+df['velE'] = df['velE'].astype(np.float64)
 df['velD'] = df['velD'].astype(np.float64)
+df['hAcc'] = df['hAcc'].astype(np.float64)
+df['vAcc'] = df['vAcc'].astype(np.float64)
+df['sAcc'] = df['sAcc'].astype(np.float64)
+df['heading'] = df['heading'].astype(np.float64)
+df['cAcc'] = df['cAcc'].astype(np.float64)
+df['gpsFix'] = df['gpsFix'].astype(np.int32)
+df['numSV'] = df['numSV'].astype(np.int32)
 
 # Calculate speed
 shifted_1 = df.shift(1)
